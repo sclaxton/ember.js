@@ -72,8 +72,8 @@ moduleFor(
 
     ['@test works with argument form'](assert) {
       expectDeprecation(() => {
-        assert.equal(('_Hello %@', 'John'), 'Bonjour John');
-        assert.equal(('_Hello %@ %@', ['John'], 'Doe'), 'Bonjour John Doe');
+        assert.equal(loc('_Hello %@', 'John'), 'Bonjour John');
+        assert.equal(loc('_Hello %@ %@', ['John'], 'Doe'), 'Bonjour John Doe');
       }, /loc is deprecated/);
     }
   }

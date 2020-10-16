@@ -6,6 +6,7 @@ export { getStrings as _getStrings, setStrings as _setStrings } from './lib/stri
 
 import { ENV } from '@ember/-internals/environment';
 import { Cache } from '@ember/-internals/utils';
+import { deprecate } from '@ember/debug';
 import { getString } from './lib/string_registry';
 
 const STRING_DASHERIZE_REGEXP = /[ _]/g;
@@ -111,6 +112,16 @@ function _fmt(str: string, formats: any[]) {
   @public
 */
 export function loc(str: string, formats: any[]): string {
+  deprecate('loc is deprecated.', false, {
+    id: 'ember-string.loc',
+    until: '4.0.0',
+    for: '@ember/string',
+    url: 'https://deprecations.emberjs.com/v3.x#toc_ember-string-loc',
+    since: {
+      available: '3.25',
+    },
+  });
+
   if (!Array.isArray(formats) || arguments.length > 2) {
     formats = Array.prototype.slice.call(arguments, 1);
   }

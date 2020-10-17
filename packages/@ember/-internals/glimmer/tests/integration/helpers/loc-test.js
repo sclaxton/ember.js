@@ -111,7 +111,7 @@ moduleFor(
           'the bound value is correct after replacement'
         );
       }, /loc is deprecated/);
-    };
+    }
 
     ['@test it can be overriden']() {
       this.registerHelper('loc', () => 'Yup');

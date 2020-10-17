@@ -238,7 +238,7 @@ export default class CurlyComponentManager
       return null;
     }
 
-    return { positional: EMPTY_ARRAY, named };
+    return { positional: EMPTY_ARRAY as Reference[], named };
   }
 
   /*

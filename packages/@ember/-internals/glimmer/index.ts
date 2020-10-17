@@ -390,10 +390,6 @@ export {
 } from './lib/template_registry';
 export { setupEngineRegistry, setupApplicationRegistry } from './lib/setup-registry';
 export { DOMChanges, NodeDOMTreeConstruction, DOMTreeConstruction } from './lib/dom';
-export {
-  registerMacros as _registerMacros,
-  experimentalMacros as _experimentalMacros,
-} from './lib/syntax';
 export { default as AbstractComponentManager } from './lib/component-managers/abstract';
 
 // needed for test

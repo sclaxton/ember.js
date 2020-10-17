@@ -12,9 +12,9 @@ import {
   Option,
   RenderResult,
   RuntimeContext,
-  SyntaxCompilationContext,
+  CompileTimeCompilationContext,
 } from '@glimmer/interfaces';
-import { syntaxCompilationContext } from '@glimmer/opcode-compiler';
+import { programCompilationContext } from '@glimmer/opcode-compiler';
 import { artifacts } from '@glimmer/program';
 import { createConstRef, Reference, UNDEFINED_REFERENCE, valueForRef } from '@glimmer/reference';
 import {
@@ -39,7 +39,6 @@ import { RootComponentDefinition } from './component-managers/root';
 import { NodeDOMTreeConstruction } from './dom';
 import { EmberEnvironmentDelegate, EmberEnvironmentExtra } from './environment';
 import RuntimeResolver from './resolver';
-import { populateMacros } from './syntax';
 import { Factory as TemplateFactory, OwnedTemplate } from './template';
 import { Component } from './utils/curly-component-state-bucket';
 import { OutletState } from './utils/outlet';
@@ -86,7 +85,7 @@ class RootState {
   constructor(
     public root: Component | OutletView,
     public runtime: RuntimeContext<OwnedTemplateMeta, EmberEnvironmentExtra>,
-    context: SyntaxCompilationContext,
+    context: CompileTimeCompilationContext,
     template: OwnedTemplate,
     self: Reference<unknown>,
     parentElement: SimpleElement,
@@ -250,7 +249,7 @@ export abstract class Renderer {
   private _builder: IBuilder;
   private _inRenderTransaction = false;
 
-  private _context: SyntaxCompilationContext;
+  private _context: CompileTimeCompilationContext;
   private _runtime: RuntimeContext<OwnedTemplateMeta, EmberEnvironmentExtra>;
 
   private _lastRevision = -1;
@@ -280,9 +279,7 @@ export abstract class Renderer {
 
     let sharedArtifacts = artifacts();
 
-    let context = (this._context = syntaxCompilationContext(sharedArtifacts, compileTimeResolver));
-
-    populateMacros(context.macros);
+    let context = (this._context = programCompilationContext(sharedArtifacts, compileTimeResolver));
 
     let runtimeEnvironmentDelegate = new EmberEnvironmentDelegate(owner, env.isInteractive);
     this._runtime = runtimeContext(

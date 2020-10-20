@@ -3,6 +3,8 @@ import { Factory, Owner } from '@ember/-internals/owner';
 import { TemplateFactory } from '@ember/-internals/glimmer';
 import { SimpleElement } from '@simple-dom/interface';
 
+export { jQuery, jQueryDisabled } from './lib/system/jquery';
+
 export interface StaticTemplateMeta {
   moduleName: string;
   managerId?: string;

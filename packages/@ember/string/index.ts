@@ -121,7 +121,7 @@ export function loc(str: string, formats: any[]): string {
       for: '@ember/string',
       url: 'https://deprecations.emberjs.com/v3.x#toc_ember-string-loc',
       since: {
-        available: '3.25',
+        available: '3.24',
       },
     }
   );

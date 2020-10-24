@@ -113,7 +113,7 @@ function _fmt(str: string, formats: any[]) {
 */
 export function loc(str: string, formats: any[]): string {
   deprecate(
-    'loc is deprecated, please use a dedication localization solution like ember-intl. More alternatives listed at https://emberobserver.com/categories/internationalization.',
+    'loc is deprecated, please use a dedicated localization solution like ember-intl. More alternatives listed at https://emberobserver.com/categories/internationalization.',
     false,
     {
       id: 'ember-string.loc',
